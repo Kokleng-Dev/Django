@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+from store.models import Customer, Product
 # Create your views here.
 # request -> response
 # request handler
 # action 
 
 def calculate():
+
   x = 1
   y = 2
   return x
@@ -15,5 +18,11 @@ def say_hello(request):
   # Transform data
 
   # return HttpResponse("Hello World")
-  x = calculate()
-  return render(request,"hello.html", { 'name' : 'Kokleng' })
+
+  # x = calculate()
+
+  
+  queryset = Customer.objects.all()
+
+  return render(request,"hello.html", { 'name' : 'Kokleng', 'customers' : queryset })
+ 
